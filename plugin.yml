@@ -1,0 +1,7 @@
+main: fr.angrykiller.lightmsg.Main
+name: LightMSG
+version: 0.1
+author: AngryKiller
+commands:
+    msg:
+        description: Envoie un message privé à un autre joueur
