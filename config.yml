@@ -1,3 +1,10 @@
 #LightMSG by AngryKiller
-#Configuration file ;)
+#Languages: fr (French) or en (English)
+language: fr
 actionbar: true
+messages:
+	fr:
+		me: "Moi"
+	en:
+		me: "Me"
+			
