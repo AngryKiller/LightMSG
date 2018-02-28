@@ -1,10 +1,14 @@
 #LightMSG by AngryKiller
 #Languages: fr (French) or en (English)
+# Language config isn't working
 language: fr
 actionbar: true
 messages:
-	fr:
-		me: "Moi"
-	en:
-		me: "Me"
-			
+  fr:
+    me: "Moi"
+    usageMsg: "Utilisation: /msg <joueur> <message>"
+    noMsg: "Veuillez spécifier un message!"
+  en:
+    me: "Me"
+    usageMsg: "Usage: /msg <player> <message>"
+    noMsg: "Please specify a message !"

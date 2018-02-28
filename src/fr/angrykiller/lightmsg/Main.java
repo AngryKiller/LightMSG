@@ -29,18 +29,19 @@ public class Main extends JavaPlugin implements Listener{
 
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+		String lang = config.getString("language");
 		Player p = (Player) sender;
 		if(label.equalsIgnoreCase("msg"))
 		{
 			String targetName =  args[0];
 			String message = "";
 			if(args.length == 0){
-				p.sendMessage("Utilisation: /msg <joueur> <message>");
+				p.sendMessage("Usage: /msg <player> <message>");
 				return false;
 			}else{
 			if(args.length > 1){
 			if(Bukkit.getServer().getPlayerExact(targetName) == null){
-				p.sendMessage(ChatColor.RED+"Le joueur "+targetName+" n'est pas connecté !");
+				p.sendMessage(ChatColor.RED+"Player"+targetName+" isn't connected !");
 				return false;
 			}else{
 				for(int i = 1; i != args.length; i++){
@@ -48,9 +49,9 @@ public class Main extends JavaPlugin implements Listener{
 				}
 				Player target = (Player) Bukkit.getServer().getPlayer(targetName);
 				String messagecolored = ChatColor.translateAlternateColorCodes('&', message);
-				String targetPrefix = ChatColor.GRAY+"["+ChatColor.RED+p.getName()+ChatColor.GRAY+"] "+ChatColor.GOLD+"--> "+ChatColor.GRAY+"["+ChatColor.RED+"Moi"+ChatColor.GRAY+"]"+ChatColor.WHITE+": ";
-				String senderPrefix = ChatColor.GRAY+"["+ChatColor.RED+"Moi"+ChatColor.GRAY+"] "+ChatColor.GOLD+"--> "+ChatColor.GRAY+"["+ChatColor.RED+p.getName()+ChatColor.GRAY+"]"+ChatColor.WHITE+": ";
-				String targetActionBarMessage = ChatColor.RED+p.getName()+ChatColor.GOLD+" vous a envoyé un message: "+ChatColor.WHITE+messagecolored;
+				String targetPrefix = ChatColor.GRAY+"["+ChatColor.RED+p.getName()+ChatColor.GRAY+"] "+ChatColor.GOLD+"--> "+ChatColor.GRAY+"["+ChatColor.RED+"Me"+ChatColor.GRAY+"]"+ChatColor.WHITE+": ";
+				String senderPrefix = ChatColor.GRAY+"["+ChatColor.RED+"Me"+ChatColor.GRAY+"] "+ChatColor.GOLD+"--> "+ChatColor.GRAY+"["+ChatColor.RED+p.getName()+ChatColor.GRAY+"]"+ChatColor.WHITE+": ";
+				String targetActionBarMessage = ChatColor.RED+p.getName()+ChatColor.GOLD+" sent you a message: "+ChatColor.WHITE+messagecolored;
 				target.sendMessage(targetPrefix+messagecolored);
 				p.sendMessage(senderPrefix+messagecolored);
 				if(config.getBoolean("actionbar")){
@@ -59,18 +60,25 @@ public class Main extends JavaPlugin implements Listener{
 				}
 			}
 			}else{
-				p.sendMessage(ChatColor.RED+"Veuillez spécifier un message !");
+				p.sendMessage(ChatColor.RED+"Please specify a message!");
 				return false;
 			}
 
 			}
+		}
+		if(label.equalsIgnoreCase("lightmsg")){
+			Player player = (Player) sender;
+			player.sendMessage(ChatColor.GREEN+"LightMSG version 0.2 by"+ChatColor.BLUE+" AngryKiller");
+			player.sendMessage(ChatColor.GREEN+"Configuration:");
+			player.sendMessage(ChatColor.RED+"ActionBar"+ChatColor.WHITE+" = "+ChatColor.AQUA+config.getBoolean("actionbar"));
+			player.sendMessage(ChatColor.RED+"Language"+ChatColor.WHITE+" = "+ChatColor.AQUA+config.getString("language"));
 		}
 		return true;
 		}
 	
 	
 	public void onDisable(){
-		getLogger().info("Plugin stopped successfully !");
+		getLogger().info("Plugin stopped successfully (lel)!");
 	}
 	public void onServerReload(){
 		getLogger().info("Plugin reloaded!");

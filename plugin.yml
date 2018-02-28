@@ -5,5 +5,7 @@ author: AngryKiller
 database: false
 commands:
     msg:
-      description: Envoie un message privé à un autre joueur
+      description: Sends a private message to another player
       permission: lightmsg.send
+    lightmsg:
+      description: Shows the informations about the plugin
